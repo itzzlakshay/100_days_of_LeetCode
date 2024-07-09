@@ -1,0 +1,22 @@
+class Solution {
+    public double averageWaitingTime(int[][] customers) {
+       
+
+
+        int idealTime = 1;
+        long totalTime = 0;
+
+        for(int customer[] : customers){
+            if(idealTime <= customer[0]){
+                idealTime = customer[0] + customer[1];
+            }
+            else{
+                idealTime = idealTime + customer[1];
+            }
+            totalTime += (idealTime - customer[0]);
+        }
+        double avg = (totalTime/ (double)customers.length);
+        return avg;
+
+    }
+}
